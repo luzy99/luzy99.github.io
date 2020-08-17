@@ -10883,7 +10883,7 @@ article.article .content .message.message-immersive .message-body {
   }
 }
 .navbar-logo img {
-  max-height: 1.75rem;
+  max-height: 2.5rem;
 }
 @media screen and (max-width: 768px) {
   footer.footer .level-start {
@@ -10901,7 +10901,7 @@ footer.footer .level-end .field {
   }
 }
 .footer-logo img {
-  max-height: 1.75rem;
+  max-height: 2.5rem;
 }
 .pagination .pagination-link a,
 .pagination .pagination-ellipsis a,
@@ -11394,6 +11394,56 @@ figure.highlight .section {
   .section {
     padding: 1.5rem 1rem;
   }
+}
+.vcards .vcard {
+  padding: 12px 17px 0 17px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.12);
+  transition: all 0.3s;
+}
+.vcards .vcard:hover {
+  box-shadow: 0 0 8px 3px rgba(0,0,0,0.12);
+}
+.vcards .vcard .vh .vcard {
+  border: none;
+  box-shadow: none;
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?zaf4bz");
+  src: url("../fonts/icomoon.eot?zaf4bz#iefix") format('embedded-opentype'), url("../fonts/icomoon.ttf?zaf4bz") format('truetype'), url("../fonts/icomoon.woff?zaf4bz") format('woff'), url("../fonts/icomoon.svg?zaf4bz#icomoon") format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 23px;
+}
+.icon-CSDN:before {
+  content: "\e901";
+}
+.icon-zhihu:before {
+  content: "\e902";
+}
+.icon-bilibili:before {
+  content: "\e900";
+}
+.icon-gitee:before {
+  content: "\e903";
+}
+.fab {
+  font-size: 20px;
 }
 body {
   counter-reset: card;
