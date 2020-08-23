@@ -190,7 +190,7 @@
         });
     }
     if (typeof config !== 'undefined'
-        && typeof config.busuanzi_site_offset !== 'undefined' && typeof config.busuanzi == true) {
+        && typeof config.busuanzi_site_offset !== 'undefined' && typeof config.plugins.busuanzi == true) {
         $(document).ready(function () {
             var int = setInterval(fixCount, 100);
             var busuanziSiteOffset = parseInt(config.busuanzi_site_offset);
