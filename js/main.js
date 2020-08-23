@@ -195,7 +195,7 @@ var config = window.IcarusThemeSettings;
 if (typeof config !== 'undefined'
     && typeof config.busuanzi_site_offset !== 'undefined' && config.busuanzi == true) {
     $(document).ready(function () {
-        var int = setInterval(fixCount, 100);
+        var int = setInterval(fixCount, 300);
         var busuanziSiteOffset = parseInt(config.busuanzi_site_offset);
         function fixCount() {
             if ($("#busuanzi_container_site_uv").css("display") != "none") {
