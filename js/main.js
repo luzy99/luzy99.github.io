@@ -190,10 +190,10 @@
         });
     }
     if (typeof config !== 'undefined'
-        && typeof config.plugins.busuanzi_site_offset !== 'undefined' && typeof config.plugins.busuanzi == true) {
+        && typeof config.busuanzi_site_offset !== 'undefined' && typeof config.busuanzi == true) {
         $(document).ready(function () {
             var int = setInterval(fixCount, 100);
-            var busuanziSiteOffset = parseInt(config.plugins.busuanzi_site_offset);
+            var busuanziSiteOffset = parseInt(config.busuanzi_site_offset);
             function fixCount() {
                 if ($("#busuanzi_container_site_uv").css("display") != "none") {
                     clearInterval(int);
