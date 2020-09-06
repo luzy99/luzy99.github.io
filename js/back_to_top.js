@@ -1,1 +1,148 @@
-$(document).ready(()=>{const e=$("#back-to-top");const t=$("footer.footer");const n=$(".column-main");const o=$(".column-left");const s=$(".column-right");let i=0;const c=20;const l=20;let r=null;const a={base:{classname:"card has-text-centered",left:"",width:64,bottom:l}};a["desktop-hidden"]=Object.assign({},a.base,{classname:a.base.classname+" rise-up"});a["desktop-visible"]=Object.assign({},a["desktop-hidden"],{classname:a["desktop-hidden"].classname+" fade-in"});a["desktop-dock"]=Object.assign({},a["desktop-visible"],{classname:a["desktop-visible"].classname+" fade-in is-rounded",width:40});a["mobile-hidden"]=Object.assign({},a.base,{classname:a.base.classname+" fade-in",right:c});a["mobile-visible"]=Object.assign({},a["mobile-hidden"],{classname:a["mobile-hidden"].classname+" rise-up"});function d(e,t){return![].concat(Object.keys(e),Object.keys(t)).some(n=>{return!Object.prototype.hasOwnProperty.call(e,n)||!Object.prototype.hasOwnProperty.call(t,n)||t[n]!==e[n]})}function u(t){if(r!==null&&d(r,t)){return}e.attr("class",t.classname);for(const n in t){if(n==="classname"){continue}e.css(n,t[n])}r=t}function f(){return window.innerWidth>=1078}function b(){return window.innerWidth>=768&&!f()}function h(){return $(window).scrollTop()<i&&$(window).scrollTop()>0}function m(){return o.length>0}function p(){return s.length>0}function w(){if(!p()){return 0}return Math.max.apply(null,s.find(".widget").map(function(){return $(this).offset().top+$(this).outerHeight(true)}))}function k(){return $(window).scrollTop()}function g(){return $(window).scrollTop()+$(window).height()}function O(){return e.outerWidth(true)}function j(){return e.outerHeight(true)}function y(){i=$(window).scrollTop()}function v(){if(f()||b()&&!m()&&p()){let e;const o=(n.outerWidth()-n.width())/2;const s=$(window).width()-O()-c;const i=t.offset().top+j()/2+l;if(k()===0||g()<w()+o+j()){e=a["desktop-hidden"]}else if(g()<i){e=a["desktop-visible"]}else{e=Object.assign({},a["desktop-dock"],{bottom:g()-i+l})}const r=n.offset().left+n.outerWidth()+o;e=Object.assign({},e,{left:Math.min(r,s)});u(e)}else{if(!h()){u(a["mobile-hidden"])}else{u(a["mobile-visible"])}y()}}v();$(window).resize(v);$(window).scroll(v);$("#back-to-top").on("click",()=>{$("body, html").animate({scrollTop:0},400)})});
+$(document).ready(() => {
+    const $button = $('#back-to-top');
+    const $footer = $('footer.footer');
+    const $mainColumn = $('.column-main');
+    const $leftSidebar = $('.column-left');
+    const $rightSidebar = $('.column-right');
+    let lastScrollTop = 0;
+    const rightMargin = 20;
+    const bottomMargin = 20;
+    let lastState = null;
+    const state = {
+        base: {
+            classname: 'card has-text-centered',
+            left: '',
+            width: 64,
+            bottom: bottomMargin
+        }
+    };
+    state['desktop-hidden'] = Object.assign({}, state.base, {
+        classname: state.base.classname + ' rise-up'
+    });
+    state['desktop-visible'] = Object.assign({}, state['desktop-hidden'], {
+        classname: state['desktop-hidden'].classname + ' fade-in'
+    });
+    state['desktop-dock'] = Object.assign({}, state['desktop-visible'], {
+        classname: state['desktop-visible'].classname + ' fade-in is-rounded',
+        width: 40
+    });
+    state['mobile-hidden'] = Object.assign({}, state.base, {
+        classname: state.base.classname + ' fade-in',
+        right: rightMargin
+    });
+    state['mobile-visible'] = Object.assign({}, state['mobile-hidden'], {
+        classname: state['mobile-hidden'].classname + ' rise-up'
+    });
+
+    function isStateEquals(prev, next) {
+        return ![].concat(Object.keys(prev), Object.keys(next)).some(key => {
+            return !Object.prototype.hasOwnProperty.call(prev, key)
+                || !Object.prototype.hasOwnProperty.call(next, key)
+                || next[key] !== prev[key];
+        });
+    }
+
+    function applyState(state) {
+        if (lastState !== null && isStateEquals(lastState, state)) {
+            return;
+        }
+        $button.attr('class', state.classname);
+        for (const prop in state) {
+            if (prop === 'classname') {
+                continue;
+            }
+            $button.css(prop, state[prop]);
+        }
+        lastState = state;
+    }
+
+    function isDesktop() {
+        return window.innerWidth >= 1078;
+    }
+
+    function isTablet() {
+        return window.innerWidth >= 768 && !isDesktop();
+    }
+
+    function isScrollUp() {
+        return $(window).scrollTop() < lastScrollTop && $(window).scrollTop() > 0;
+    }
+
+    function hasLeftSidebar() {
+        return $leftSidebar.length > 0;
+    }
+
+    function hasRightSidebar() {
+        return $rightSidebar.length > 0;
+    }
+
+    function getRightSidebarBottom() {
+        if (!hasRightSidebar()) {
+            return 0;
+        }
+        return Math.max.apply(null, $rightSidebar.find('.widget').map(function() {
+            return $(this).offset().top + $(this).outerHeight(true);
+        }));
+    }
+
+    function getScrollTop() {
+        return $(window).scrollTop();
+    }
+
+    function getScrollBottom() {
+        return $(window).scrollTop() + $(window).height();
+    }
+
+    function getButtonWidth() {
+        return $button.outerWidth(true);
+    }
+
+    function getButtonHeight() {
+        return $button.outerHeight(true);
+    }
+
+    function updateScrollTop() {
+        lastScrollTop = $(window).scrollTop();
+    }
+
+    function update() {
+        // desktop mode or tablet mode with only right sidebar enabled
+        if (isDesktop() || (isTablet() && !hasLeftSidebar() && hasRightSidebar())) {
+            let nextState;
+            const padding = ($mainColumn.outerWidth() - $mainColumn.width()) / 2;
+            const maxLeft = $(window).width() - getButtonWidth() - rightMargin;
+            const maxBottom = $footer.offset().top + (getButtonHeight() / 2) + bottomMargin;
+            if (getScrollTop() === 0 || getScrollBottom() < getRightSidebarBottom() + padding + getButtonHeight()) {
+                nextState = state['desktop-hidden'];
+            } else if (getScrollBottom() < maxBottom) {
+                nextState = state['desktop-visible'];
+            } else {
+                nextState = Object.assign({}, state['desktop-dock'], {
+                    bottom: getScrollBottom() - maxBottom + bottomMargin
+                });
+            }
+
+            const left = $mainColumn.offset().left + $mainColumn.outerWidth() + padding;
+            nextState = Object.assign({}, nextState, {
+                left: Math.min(left, maxLeft)
+            });
+            applyState(nextState);
+        } else {
+            // mobile and tablet mode
+            if (!isScrollUp()) {
+                applyState(state['mobile-hidden']);
+            } else {
+                applyState(state['mobile-visible']);
+            }
+            updateScrollTop();
+        }
+    }
+
+    update();
+    $(window).resize(update);
+    $(window).scroll(update);
+
+    $('#back-to-top').on('click', () => {
+        $('body, html').animate({ scrollTop: 0 }, 400);
+    });
+});
