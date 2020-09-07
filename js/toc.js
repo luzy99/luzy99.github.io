@@ -61,7 +61,7 @@
             $heading.scrollIntoView({ behavior: 'smooth' });
           }
         });
-        $heading.style.scrollMargin = '1em';
+        $heading.style.scrollMargin = '3em';
       }
     }
   }
