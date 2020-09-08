@@ -431,6 +431,20 @@
   </url>
   
   <url>
+    <loc>https://blog.luzy.top/tags/ssh/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/DNS/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.luzy.top/tags/lingo/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -446,20 +460,6 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E6%95%B0%E6%A8%A1/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/ssh/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/DNS/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -571,6 +571,13 @@
   </url>
   
   <url>
+    <loc>https://blog.luzy.top/tags/cloudflare/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.luzy.top/tags/Java/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -579,13 +586,6 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/cloudflare/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -641,6 +641,13 @@
   </url>
   
   <url>
+    <loc>https://blog.luzy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.luzy.top/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -649,13 +656,6 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/CentOS/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
