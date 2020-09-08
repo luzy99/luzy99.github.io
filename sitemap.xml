@@ -340,6 +340,13 @@
   </url>
   
   <url>
+    <loc>https://blog.luzy.top/tags/vps/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.luzy.top/tags/%E5%9B%BE%E5%BA%8A/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -376,13 +383,6 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/vps/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -501,7 +501,14 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/</loc>
+    <loc>https://blog.luzy.top/tags/matplotlib/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/%E7%BB%98%E5%9B%BE/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -515,14 +522,21 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/matplotlib/</loc>
+    <loc>https://blog.luzy.top/tags/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/%E7%BB%98%E5%9B%BE/</loc>
+    <loc>https://blog.luzy.top/tags/filebrowser/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/%E7%BD%91%E7%9B%98/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -572,20 +586,6 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/cloudflare/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/filebrowser/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/%E7%BD%91%E7%9B%98/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
