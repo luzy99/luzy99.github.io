@@ -396,14 +396,14 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/html/</loc>
+    <loc>https://blog.luzy.top/tags/%E8%AE%BF%E5%AE%A2%E8%AE%A1%E6%95%B0/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/%E8%AE%BF%E5%AE%A2%E8%AE%A1%E6%95%B0/</loc>
+    <loc>https://blog.luzy.top/tags/html/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -431,20 +431,6 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/ssh/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/DNS/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.luzy.top/tags/lingo/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -460,6 +446,20 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E6%95%B0%E6%A8%A1/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/ssh/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/DNS/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,13 +494,6 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.luzy.top/tags/matplotlib/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -509,6 +502,13 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E7%BB%98%E5%9B%BE/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -571,13 +571,6 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/cloudflare/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.luzy.top/tags/Java/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
@@ -613,14 +606,7 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/API/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.luzy.top/tags/%E5%BE%AE%E5%8D%9A/</loc>
+    <loc>https://blog.luzy.top/tags/cloudflare/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -641,7 +627,14 @@
   </url>
   
   <url>
-    <loc>https://blog.luzy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</loc>
+    <loc>https://blog.luzy.top/tags/API/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/%E5%BE%AE%E5%8D%9A/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -663,6 +656,13 @@
   
   <url>
     <loc>https://blog.luzy.top/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
+    <lastmod>2020-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luzy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</loc>
     <lastmod>2020-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
