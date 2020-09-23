@@ -1,1 +1,169 @@
-(function(i,t,e,a){i('.article img:not(".not-gallery-item")').each(function(){if(i(this).parent("a").length===0){i(this).wrap('<a class="gallery-item" href="'+i(this).attr("src")+'"></a>');if(this.alt){i(this).after('<p class="has-text-centered is-size-6 caption">'+this.alt+"</p>")}}});if(typeof i.fn.lightGallery==="function"){i(".article").lightGallery({selector:".gallery-item"})}if(typeof i.fn.justifiedGallery==="function"){if(i(".justified-gallery > p > .gallery-item").length){i(".justified-gallery > p > .gallery-item").unwrap()}i(".justified-gallery").justifiedGallery()}if(!i(".columns .column-right-shadow").children().length){i(".columns .column-right-shadow").append(i(".columns .column-right").children().clone())}if(typeof t==="function"){t.locale("zh-cn");i(".article-meta time").each(function(){i(this).text(t(i(this).attr("datetime")).fromNow())})}i(".article > .content > table").each(function(){if(i(this).width()>i(this).parent().width()){i(this).wrap('<div class="table-overflow"></div>')}});function n(){const t=i(".navbar-main .navbar-start").outerWidth()+i(".navbar-main .navbar-end").outerWidth();if(i(document).outerWidth()<t){i(".navbar-main .navbar-menu").addClass("justify-content-start")}else{i(".navbar-main .navbar-menu").removeClass("justify-content-start")}}n();i(window).resize(n);function l(t,e){const a=i(t).find(".fold i");!e?i(t).removeClass("folded"):i(t).addClass("folded");!e?a.removeClass("fa-angle-right"):a.removeClass("fa-angle-down");!e?a.addClass("fa-angle-down"):a.addClass("fa-angle-right")}function s(i){return'<span class="fold">'+(i==="unfolded"?'<i class="fas fa-angle-down"></i>':'<i class="fas fa-angle-right"></i>')+"</span>"}i("figure.highlight table").wrap('<div class="highlight-body">');if(typeof a!=="undefined"&&typeof a.article!=="undefined"&&typeof a.article.highlight!=="undefined"){i("figure.highlight").addClass("hljs");i("figure.highlight .code .line span").each(function(){const t=i(this).attr("class").split(/\s+/);if(t.length===1){i(this).addClass("hljs-"+t[0]);i(this).removeClass(t[0])}});const t=a.article.highlight.clipboard;const n=a.article.highlight.fold.trim();i("figure.highlight").each(function(){if(i(this).find("figcaption").length){i(this).find("figcaption").addClass("level is-mobile");i(this).find("figcaption").append('<div class="level-left">');i(this).find("figcaption").append('<div class="level-right">');i(this).find("figcaption div.level-left").append(i(this).find("figcaption").find("span"));i(this).find("figcaption div.level-right").append(i(this).find("figcaption").find("a"))}else{if(t||n){i(this).prepend('<figcaption class="level is-mobile"><div class="level-left"></div><div class="level-right"></div></figcaption>')}}});if(typeof e!=="undefined"&&t){i("figure.highlight").each(function(){const t="code-"+Date.now()+(Math.random()*1e3|0);const e='<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#'+t+' .code"><i class="fas fa-copy"></i></a>';i(this).attr("id",t);i(this).find("figcaption div.level-right").append(e)});new e(".highlight .copy")}if(n){i("figure.highlight").each(function(){if(i(this).find("figcaption").find("span").length>0){const t=i(this).find("figcaption").find("span");if(t[0].innerText.indexOf(">folded")>-1){t[0].innerText=t[0].innerText.replace(">folded","");i(this).find("figcaption div.level-left").prepend(s("folded"));l(this,true);return}}i(this).find("figcaption div.level-left").prepend(s(n));l(this,n==="folded")});i("figure.highlight figcaption .fold").click(function(){const t=i(this).closest("figure.highlight");l(t.eq(0),!t.hasClass("folded"))})}}const o=i("#toc");if(o.length>0){const t=i("<div>");t.attr("id","toc-mask");i("body").append(t);function d(){o.toggleClass("is-active");t.toggleClass("is-active")}o.on("click",d);t.on("click",d);i(".navbar-main .catalogue").on("click",d)}i().backstretch();var f=i(document).scrollTop();var c=i(".navbar").outerHeight();i(window).scroll(function(){i(".navbar")[0].style.opacity="";var t=i(document).scrollTop();if(t>c){i(".navbar").addClass("hide")}else{i(".navbar").removeClass("hide")}if(t<f){i(".navbar").removeClass("hide")}f=i(document).scrollTop()})})(jQuery,window.moment,window.ClipboardJS,window.IcarusThemeSettings);
+/* eslint-disable node/no-unsupported-features/node-builtins */
+(function($, moment, ClipboardJS, config) {
+    $('.article img:not(".not-gallery-item")').each(function() {
+        // wrap images with link and add caption if possible
+        if ($(this).parent('a').length === 0) {
+            $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
+            if (this.alt) {
+                $(this).after('<p class="has-text-centered is-size-6 caption">' + this.alt + '</p>');
+            }
+        }
+    });
+
+    if (typeof $.fn.lightGallery === 'function') {
+        $('.article').lightGallery({ selector: '.gallery-item' });
+    }
+    if (typeof $.fn.justifiedGallery === 'function') {
+        if ($('.justified-gallery > p > .gallery-item').length) {
+            $('.justified-gallery > p > .gallery-item').unwrap();
+        }
+        $('.justified-gallery').justifiedGallery();
+    }
+
+    if (!$('.columns .column-right-shadow').children().length) {
+        $('.columns .column-right-shadow').append($('.columns .column-right').children().clone());
+    }
+
+    if (typeof moment === 'function') {
+        moment.locale('zh-cn');
+        $('.article-meta time').each(function() {
+            $(this).text(moment($(this).attr('datetime')).fromNow());
+        });
+    }
+
+    $('.article > .content > table').each(function() {
+        if ($(this).width() > $(this).parent().width()) {
+            $(this).wrap('<div class="table-overflow"></div>');
+        }
+    });
+
+    function adjustNavbar() {
+        const navbarWidth = $('.navbar-main .navbar-start').outerWidth() + $('.navbar-main .navbar-end').outerWidth();
+        if ($(document).outerWidth() < navbarWidth) {
+            $('.navbar-main .navbar-menu').addClass('justify-content-start');
+        } else {
+            $('.navbar-main .navbar-menu').removeClass('justify-content-start');
+        }
+    }
+    adjustNavbar();
+    $(window).resize(adjustNavbar);
+
+    function toggleFold(codeBlock, isFolded) {
+        const $toggle = $(codeBlock).find('.fold i');
+        !isFolded ? $(codeBlock).removeClass('folded') : $(codeBlock).addClass('folded');
+        !isFolded ? $toggle.removeClass('fa-angle-right') : $toggle.removeClass('fa-angle-down');
+        !isFolded ? $toggle.addClass('fa-angle-down') : $toggle.addClass('fa-angle-right');
+    }
+
+    function createFoldButton(fold) {
+        return '<span class="fold">' + (fold === 'unfolded' ? '<i class="fas fa-angle-down"></i>' : '<i class="fas fa-angle-right"></i>') + '</span>';
+    }
+
+    $('figure.highlight table').wrap('<div class="highlight-body">');
+    if (typeof config !== 'undefined'
+        && typeof config.article !== 'undefined'
+        && typeof config.article.highlight !== 'undefined') {
+
+        $('figure.highlight').addClass('hljs');
+        $('figure.highlight .code .line span').each(function() {
+            const classes = $(this).attr('class').split(/\s+/);
+            if (classes.length === 1) {
+                $(this).addClass('hljs-' + classes[0]);
+                $(this).removeClass(classes[0]);
+            }
+        });
+
+
+        const clipboard = config.article.highlight.clipboard;
+        const fold = config.article.highlight.fold.trim();
+
+        $('figure.highlight').each(function() {
+            if ($(this).find('figcaption').length) {
+                $(this).find('figcaption').addClass('level is-mobile');
+                $(this).find('figcaption').append('<div class="level-left">');
+                $(this).find('figcaption').append('<div class="level-right">');
+                $(this).find('figcaption div.level-left').append($(this).find('figcaption').find('span'));
+                $(this).find('figcaption div.level-right').append($(this).find('figcaption').find('a'));
+            } else {
+                if (clipboard || fold) {
+                    $(this).prepend('<figcaption class="level is-mobile"><div class="level-left"></div><div class="level-right"></div></figcaption>');
+                }
+            }
+        });
+
+        if (typeof ClipboardJS !== 'undefined' && clipboard) {
+            $('figure.highlight').each(function() {
+                const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
+                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-copy"></i></a>';
+                $(this).attr('id', id);
+                $(this).find('figcaption div.level-right').append(button);
+            });
+            new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
+        }
+
+        if (fold) {
+            $('figure.highlight').each(function() {
+                if ($(this).find('figcaption').find('span').length > 0) {
+                    const span = $(this).find('figcaption').find('span');
+                    if (span[0].innerText.indexOf('>folded') > -1) {
+                        span[0].innerText = span[0].innerText.replace('>folded', '');
+                        $(this).find('figcaption div.level-left').prepend(createFoldButton('folded'));
+                        toggleFold(this, true);
+                        return;
+                    }
+                }
+                $(this).find('figcaption div.level-left').prepend(createFoldButton(fold));
+                toggleFold(this, fold === 'folded');
+            });
+
+            $('figure.highlight figcaption .fold').click(function() {
+                const $code = $(this).closest('figure.highlight');
+                toggleFold($code.eq(0), !$code.hasClass('folded'));
+            });
+        }
+    }
+
+    const $toc = $('#toc');
+    if ($toc.length > 0) {
+        const $mask = $('<div>');
+        $mask.attr('id', 'toc-mask');
+
+        $('body').append($mask);
+
+        function toggleToc() { // eslint-disable-line no-inner-declarations
+            $toc.toggleClass('is-active');
+            $mask.toggleClass('is-active');
+        }
+
+        $toc.on('click', toggleToc);
+        $mask.on('click', toggleToc);
+        $('.navbar-main .catalogue').on('click', toggleToc);
+    }
+
+    // 加载背景图
+    $().backstretch();
+// 导航栏自动隐藏
+    //页面初始化的时候，获取滚动条的高度（上次高度）
+    var start_height = $(document).scrollTop();
+    //获取导航栏的高度(包含 padding 和 border)
+    var navigation_height = $('.navbar').outerHeight();
+
+    $(window).scroll(function() {
+        $('.navbar')[0].style.opacity = '';
+        //触发滚动事件后，滚动条的高度（本次高度）
+        var end_height = $(document).scrollTop();
+        //触发后的高度 与 元素的高度对比
+        if (end_height > navigation_height){
+            $('.navbar').addClass('hide');
+        }else {
+            $('.navbar').removeClass('hide');
+        }
+        //触发后的高度 与 上次触发后的高度
+        if (end_height < start_height){
+            $('.navbar').removeClass('hide');
+        }
+        //再次获取滚动条的高度，用于下次触发事件后的对比
+        start_height = $(document).scrollTop();
+    });
+
+}(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
