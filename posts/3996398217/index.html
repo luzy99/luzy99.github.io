@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"><meta name="keywords" content="博客,hexo,python,blog,编程,教程,分享"><meta name="description" content="记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"><title>LCP-19 秋叶收藏集 - 江风引雨の小po站</title><meta description="题目回顾              题目详情                    小扣出去秋游，途中收集了一些红叶和黄叶，他利用这些叶子初步整理了一份秋叶收藏集 leaves， 字符串 leaves 仅包含小写字符 r 和 y， 其中字符 r 表示一片红叶，字符 y 表示一片黄叶。出于美观整齐的考虑，小扣想要将收藏集中树叶的排列调整成「红、黄、红」三部分。每部分树叶数量可以不相等，但均需大于等于"><meta property="og:type" content="article"><meta property="og:title" content="LCP-19 秋叶收藏集"><meta property="og:url" content="https://blog.luzy.top/posts/3996398217/"><meta property="og:site_name" content="江风引雨の小po站"><meta property="og:description" content="题目回顾              题目详情                    小扣出去秋游，途中收集了一些红叶和黄叶，他利用这些叶子初步整理了一份秋叶收藏集 leaves， 字符串 leaves 仅包含小写字符 r 和 y， 其中字符 r 表示一片红叶，字符 y 表示一片黄叶。出于美观整齐的考虑，小扣想要将收藏集中树叶的排列调整成「红、黄、红」三部分。每部分树叶数量可以不相等，但均需大于等于"><meta property="og:image" content="https://blog.luzy.top/img/og_image.png"><meta property="article:published_time" content="2020-10-03T05:45:33.000Z"><meta property="article:modified_time" content="2020-10-03T06:48:17.227Z"><meta property="article:author" content="江风引雨"><meta property="article:tag" content="动态规划"><meta property="article:tag" content="前缀和"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.luzy.top/posts/3996398217/"},"headline":"江风引雨の小站","image":["https://blog.luzy.top/img/og_image.png"],"datePublished":"2020-10-03T05:45:33.000Z","dateModified":"2020-10-03T06:48:17.227Z","author":{"@type":"Person","name":"江风引雨"},"description":"记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"}</script><link rel="canonical" href="https://blog.luzy.top/posts/3996398217/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.14.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?b772a609bf40ffa183e1a396b066d2b5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=UA-157705821-2" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-157705821-2');</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column" style="background-image:url(https://cdn.jsdelivr.net/gh/luzy99/cdn/img/20200826000131.jpeg);"><script type="text/javascript" src="/js/imaegoo/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/"><i class="nav-icon fa fa-home"></i><p>首页</p></a><a class="navbar-item" href="/archives"><i class="nav-icon fa fa-archive"></i><p>归档</p></a><a class="navbar-item" href="/categories"><i class="nav-icon fa fa-th-list"></i><p>分类</p></a><a class="navbar-item" href="/tags"><i class="nav-icon fa fa-tags"></i><p>标签</p></a><a class="navbar-item" href="/links"><i class="nav-icon fa fa-link"></i><p>友链</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://travellings.now.sh/"><i class="nav-icon fa fa-paper-plane"></i><p>开往</p></a><a class="navbar-item" href="/about"><i class="nav-icon fa fa-info-circle"></i><p>关于</p></a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-10-03T05:45:33.000Z" title="2020-10-03T05:45:33.000Z">2020-10-03</time>发布</span><span class="level-item"><a class="link-muted" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/">算法题解</a></span><span class="level-item">5 分钟读完 (大约797个字)</span><span class="level-item" id="busuanzi_container_page_pv">&nbsp;&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">LCP-19 秋叶收藏集</h1><div class="content"><h2 id="题目回顾"><a href="#题目回顾" class="headerlink" title="题目回顾"></a>题目回顾</h2><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        题目详情
+    </div>
+    <div class='spoiler-content'>
+        <blockquote>
+<p>小扣出去秋游，途中收集了一些红叶和黄叶，他利用这些叶子初步整理了一份秋叶收藏集 leaves， 字符串 leaves 仅包含小写字符 r 和 y， 其中字符 r 表示一片红叶，字符 y 表示一片黄叶。<br>出于美观整齐的考虑，小扣想要将收藏集中树叶的排列调整成「红、黄、红」三部分。每部分树叶数量可以不相等，但均需大于等于 1。每次调整操作，小扣可以将一片红叶替换成黄叶或者将一片黄叶替换成红叶。请问小扣最少需要多少次调整操作才能将秋叶收藏集调整完毕。</p>
+<p><strong>示例 1：</strong></p>
+<blockquote>
+<p>输入：leaves = “rrryyyrryyyrr”</p>
+<p>输出：2</p>
+<p>解释：调整两次，将中间的两片红叶替换成黄叶，得到 “rrryyyyyyyyrr”</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/UlBDOe">https://leetcode-cn.com/problems/UlBDOe</a></p>
+</blockquote>
+
+    </div>
+</div>
+<a id="more"></a>
+<h2 id="解法思路"><a href="#解法思路" class="headerlink" title="解法思路"></a>解法思路</h2><p>这题有两种解法，先着重写一下<strong>前缀和+动态规划</strong>的解法。</p>
+<p>要将树叶分成<strong>红-黄-红</strong>三部分，关键就是要找到2个分界点。不妨将这两个点设为<code>x</code>,<code>y</code>.</p>
+<blockquote>
+<p>[0,x-1] 红</p>
+<p>[x,y-1] 黄</p>
+<p>[y,n-1] 红</p>
+</blockquote>
+<p>那么我们需要操作的次数，就是<strong>第一段中黄色的个数、第二段中红色的个数以及第三段中黄色的个数之和</strong>，我们的目标就是要找到这个<strong>和的最小值</strong>。</p>
+<p>为了更方便的表示每段中不同颜色的个数，我们可以定义一个<strong>前缀和数组</strong>，</p>
+<script type="math/tex; mode=display">
+sumR[i]=leaves[0,i]中红色的个数</script><p>所以需要进行的操作次数可表示为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+op=&\left( x-sumR\left[ x-1 \right] \right) +\left( sumR\left[ y-1 \right] -sumR\left[ x-1 \right] \right) 
+\\
+&+\left( \left( n-y \right) -\left( sumR\left[ n-1 \right] -sumR\left[ y-1 \right] \right) \right) 
+\\
+=&\left( x-2sumR\left[ x-1 \right] \right) -\left( y-2sumR\left[ y-1 \right] \right) 
+\\
+&+n-sumR\left[ n-1 \right] 
+\end{aligned}</script><p>$n-sumR\left[ n-1 \right] $是常数不用管，而观察到<code>x</code>,<code>y</code>相关的表达式形式是统一的，因此不妨令</p>
+<script type="math/tex; mode=display">
+t[i]=i+1-2*sumR[i]</script><p>要求<code>op</code>的最小值，就转化为求$t[x]-t[y]$的最小值，或者说，求$t[y]-t[x],(y&gt;x)$的最小值。那么问题就转化成求<strong>股票最大差价的问题</strong>了，就是一个典型的动态规划问题。</p>
+<p>下面需要关心一下x,y的取值范围。</p>
+<script type="math/tex; mode=display">
+n-1 \ge y \ge x+1\\
+x \ge 1</script><p>那么x的范围就是$[1,n-2]$.</p>
+<p>因此只需一次遍历t[n]数组，就能得到最大差值。</p>
+<p>总体来说，时间复杂度为O(n)，空间复杂度也为O(n)。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumOperations</span>(<span class="params">self, leaves: str</span>) -&gt; int:</span></span><br><span class="line">        n=len(leaves)</span><br><span class="line">        sumR = [<span class="number">0</span>]*n</span><br><span class="line">        sumR[<span class="number">0</span>]=int(leaves[<span class="number">0</span>]==<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        <span class="comment"># 计算 sumR</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n):</span><br><span class="line">            sumR[i]=sumR[i<span class="number">-1</span>]+int(leaves[i]==<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">		<span class="comment"># 计算 t</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            t[i]=i+<span class="number">1</span><span class="number">-2</span>*sumR[i]</span><br><span class="line">        minT=float(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">        max_delta=-float(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">        <span class="comment"># 计算 max(t[x]-t[y])</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n<span class="number">-1</span>):</span><br><span class="line">            minT=min(t[i<span class="number">-1</span>],minT)</span><br><span class="line">            max_delta=max(max_delta,t[i]-minT)</span><br><span class="line">        <span class="keyword">return</span> n-sumR[n<span class="number">-1</span>]-max_delta</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><div class="article-licensing box"><div class="licensing-title"><p>LCP-19 秋叶收藏集</p><p><a href="https://blog.luzy.top/posts/3996398217/">https://blog.luzy.top/posts/3996398217/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>江风引雨</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-10-03</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2020-10-03</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">前缀和</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button is-info donate"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://cdn.jsdelivr.net/gh/luzy99/cdn/img/alipay.jpg" alt="支付宝"></span></a><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://cdn.jsdelivr.net/gh/luzy99/cdn/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/3051215520/"><span class="level-item">基于Scrapy的关键词式新闻爬虫</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "6u1kzc8bz3w5XDibYBpuMiOW-MdYXbMMI",
+            appKey: "5fs1gh1F8FslxYsnLddMtKxe",
+            placeholder: "发条友善的评论吧！",
+            avatar: "mm",
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            
+            highlight: true,
+            recordIP: true,
+            
+            
+            
+            enableQQ: true,
+            
+            tagMeta: ["博主","小伙伴",""],
+            master: ["a0a976d45a9e9edd12774e76008c49af","fe3373de9647b0c702831909a0e98db0"],
+            friends: [],
+            metaPlaceholder: {"nick":"昵称/QQ号（必填）","mail":"邮箱（必填）","link":"个人站点（选填）"},
+            requiredFields: ["nick","mail"],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#题目回顾"><span class="mr-2">1</span><span>题目回顾</span></a></li><li><a class="is-flex" href="#解法思路"><span class="mr-2">2</span><span>解法思路</span></a></li><li><a class="is-flex" href="#代码实现"><span class="mr-2">3</span><span>代码实现</span></a></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a><p class="size-small"><span>&copy; 2020 江风引雨</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub Page" href="https://github.com/luzy99/luzy99.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-Hans");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://blog.luzy.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script>if (typeof 300 !== 'undefined' 
+        && true == true) {
+        $(document).ready(function () {
+            var int = setInterval(fixCount, 100);
+            var busuanziSiteOffset = parseInt(300);
+            function fixCount() {
+                if ($("#busuanzi_container_site_uv").css("display") != "none" && parseInt($("#busuanzi_value_site_uv").html()) > 0) {
+                    clearInterval(int);
+                    $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
+                }
+            }
+        });
+    }</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><script src="/js/imaegoo/universe.js"></script><script src="//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/live2d.min.js"></script><script type="text/javascript" src="/js/firework.js"></script></body></html>
