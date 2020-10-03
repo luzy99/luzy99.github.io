@@ -10946,13 +10946,23 @@ article.article .content .message.message-immersive .message-body {
   box-shadow: 0 3px 5px rgba(0,0,0,0.15);
   position: fixed;
   width: 100%;
+  display: flex;
   opacity: 1;
+}
+.navbar-main.active {
+  display: block;
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
 .navbar-main .navbar-end {
   align-items: stretch;
+  padding: 0;
+  flex-shrink: 0;
+}
+.navbar-main .navbar-right {
+  align-items: stretch;
   display: flex;
+  margin-left: auto;
   padding: 0;
   flex-shrink: 0;
 }
@@ -11528,9 +11538,6 @@ figure.highlight .section {
     margin-top: 6.75rem;
     padding-bottom: 2.25rem;
   }
-  .navbar-item > p {
-    display: none;
-  }
 }
 @media screen and (min-width: 1050px) {
   body > .section {
@@ -11954,8 +11961,8 @@ body.night {
 .night .navbar-menu {
   background-color: inherit;
 }
-.night .navbar-main .navbar-menu .navbar-item:hover,
-.night .navbar-main .navbar-menu .navbar-item:focus {
+.night .navbar-main .navbar-item:hover,
+.night .navbar-main .navbar-item:focus {
   color: #fff;
   background-color: #373d48;
 }

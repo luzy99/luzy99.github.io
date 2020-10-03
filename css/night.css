@@ -112,8 +112,8 @@ body.night {
 .night .navbar-menu {
   background-color: inherit;
 }
-.night .navbar-main .navbar-menu .navbar-item:hover,
-.night .navbar-main .navbar-menu .navbar-item:focus {
+.night .navbar-main .navbar-item:hover,
+.night .navbar-main .navbar-item:focus {
   color: #fff;
   background-color: #373d48;
 }

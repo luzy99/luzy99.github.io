@@ -165,5 +165,16 @@
         //再次获取滚动条的高度，用于下次触发事件后的对比
         start_height = $(document).scrollTop();
     });
+    $(document).ready(function() {
 
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+      
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-main").toggleClass("active");
+            $(".navbar-menu").toggleClass("is-active");
+      
+        });
+      });
 }(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
