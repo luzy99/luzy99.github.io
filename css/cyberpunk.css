@@ -11510,7 +11510,7 @@ figure.highlight .section {
 @media screen and (min-width: 769px), print {
   body > .section {
     padding: 1rem 0.75rem;
-    top: 7.25rem;
+    top: 3.25rem;
   }
   .is-sticky {
     position: -webkit-sticky;
@@ -11529,7 +11529,7 @@ figure.highlight .section {
 @media screen and (max-width: 768px) {
   body > .section {
     padding: 1rem 0.75rem;
-    top: 7.25rem;
+    top: 3.25rem;
   }
   ::-webkit-scrollbar {
     width: 0px;
