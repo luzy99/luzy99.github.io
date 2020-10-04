@@ -10969,7 +10969,6 @@ article.article .content .message.message-immersive .message-body {
 .navbar-main .navbar-menu {
   flex-grow: 1;
   flex-shrink: 0;
-  overflow-x: auto;
 }
 .navbar-main .navbar-start {
   justify-content: flex-start;
