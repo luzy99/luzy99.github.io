@@ -172,6 +172,8 @@
       
             // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
             $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-burger").toggleClass("is-hidden");
+            $(".navbar-right").toggleClass("is-hidden");
             $(".navbar-main").toggleClass("active");
             $(".navbar-menu").toggleClass("is-active");
       
