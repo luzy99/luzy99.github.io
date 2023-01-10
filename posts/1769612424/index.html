@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"><meta name="keywords" content="博客,hexo,python,blog,编程,教程,分享"><meta name="description" content="记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"><title>今天你体温上报了吗？ - 江风引雨の小po站</title><meta name="description" content="沉寂一个学期后，终于有空折腾点东西了。不知不觉每天起床第一件事——健康打卡已经快一年了。下至-274℃上至9999999999999℃，都无人过问，有时忘了打卡还要被不停的催。身为程序猿怎么能忍受此般形式主义每天霸占我宝贵的1分钟！（所以我花了两天时间写了这个程序) 下面步入整体，本来我觉得这不就抓个包每天定时发送就行了吗。然而事情并没有想象中那么简单，这个登录状态每天都会失效，所以不能存个coo"><meta property="og:type" content="article"><meta property="og:title" content="今天你体温上报了吗？"><meta property="og:url" content="https://blog.luzy.top/posts/1769612424/"><meta property="og:site_name" content="江风引雨の小po站"><meta property="og:description" content="沉寂一个学期后，终于有空折腾点东西了。不知不觉每天起床第一件事——健康打卡已经快一年了。下至-274℃上至9999999999999℃，都无人过问，有时忘了打卡还要被不停的催。身为程序猿怎么能忍受此般形式主义每天霸占我宝贵的1分钟！（所以我花了两天时间写了这个程序) 下面步入整体，本来我觉得这不就抓个包每天定时发送就行了吗。然而事情并没有想象中那么简单，这个登录状态每天都会失效，所以不能存个coo"><meta property="og:image" content="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130204733.jpg"><meta property="article:published_time" content="2021-01-30T12:42:17.000Z"><meta property="article:modified_time" content="2023-01-10T13:32:16.108Z"><meta property="article:author" content="江风引雨"><meta property="article:tag" content="Python"><meta property="article:tag" content="http"><meta property="article:tag" content="模拟登录"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130204733.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.luzy.top/posts/1769612424/"},"headline":"江风引雨の小站","image":["https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130204733.jpg"],"datePublished":"2021-01-30T12:42:17.000Z","dateModified":"2023-01-10T13:32:16.108Z","author":{"@type":"Person","name":"江风引雨"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"}</script><link rel="canonical" href="https://blog.luzy.top/posts/1769612424/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/font-awesome/5.14.0/css/all.min.css"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?b772a609bf40ffa183e1a396b066d2b5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://s2.pstatp.com/cdn/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=UA-157705821-2" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-157705821-2');</script><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://s2.pstatp.com/cdn/pace/1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body class="is-1-column" style="background-image:url(https://api.luzy.top/bingimg);"><script type="text/javascript" src="/js/imaegoo/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main" role="navigation" aria-label="main navigation"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a><a class="navbar-burger burger is-hidden" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/"><i class="nav-icon fa fa-home"></i><p>首页</p></a><a class="navbar-item" href="/archives"><i class="nav-icon fa fa-archive"></i><p>归档</p></a><a class="navbar-item" href="/tags"><i class="nav-icon fa fa-tags"></i><p>标签</p></a><a class="navbar-item" href="/links"><i class="nav-icon fa fa-link"></i><p>友链</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://travellings.link"><i class="nav-icon fa fa-paper-plane"></i><p>开往</p></a><a class="navbar-item" href="/about"><i class="nav-icon fa fa-info-circle"></i><p>关于</p></a><div class="navbar-item has-dropdown is-hoverable" style="padding:0"><a class="navbar-item" href="/categories"><i class="nav-icon fa fa-th-list"></i><p>分类</p></a><div class="navbar-dropdown"><a class="navbar-item" href="/categories/%E7%AC%94%E8%AE%B0%E9%9A%8F%E5%86%99"><i class="nav-icon fa fa-book"></i><p>笔记随写</p></a><a class="navbar-item" href="/categories/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4"><i class="nav-icon fa fa-tint"></i><p>生活点滴</p></a><a class="navbar-item" href="/categories/hexo%E5%8D%9A%E5%AE%A2"><i class="nav-icon fa fa-rss-square"></i><p>hexo博客</p></a><a class="navbar-item" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3"><i class="nav-icon fa fa-file-code"></i><p>算法题解</p></a><a class="navbar-item" href="/categories/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97"><i class="nav-icon fa fa-terminal"></i><p>网站日志</p></a></div></div><div class="navbar-item has-dropdown is-hoverable" style="padding:0"><a class="navbar-item"><i class="nav-icon fa fa-flask"></i><p>实验室</p></a><div class="navbar-dropdown"><a class="navbar-item" target="_blank" rel="noopener" href="https://cloud.luzy.top"><i class="nav-icon fa fa-cloud-upload-alt"></i><p>个人云盘</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://aria2.luzy.top"><i class="nav-icon fa fa-download"></i><p>离线下载</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://boost.luzy.top"><i class="nav-icon fa fa-inbox"></i><p>网页沙盒</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://v2.luzy.top"><i class="nav-icon fa fa-paper-plane"></i><p>v2panel</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://api.luzy.top"><i class="nav-icon fa fa-toolbox"></i><p>API工具箱</p></a></div></div></div></div><div class="navbar-right"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130204733.jpg" alt="今天你体温上报了吗？"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-01-30T12:42:17.000Z" title="2021-01-30T12:42:17.000Z">2021-01-30</time>发布</span><span class="level-item"><a class="link-muted" href="/categories/%E7%AC%94%E8%AE%B0%E9%9A%8F%E5%86%99/">笔记随写</a></span><span class="level-item">6 分钟读完 (大约883个字)</span><span class="level-item" id="busuanzi_container_page_pv">&nbsp;&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">今天你体温上报了吗？</h1><div class="content"><p>沉寂一个学期后，终于有空折腾点东西了。不知不觉每天起床第一件事——健康打卡已经快一年了。下至-274℃上至9999999999999℃，都无人过问，有时忘了打卡还要被不停的催。身为程序猿怎么能忍受此般形式主义每天霸占我宝贵的1分钟！（<del>所以我花了两天时间写了这个程序</del>)</p>
+<p>下面步入整体，本来我觉得这不就抓个包每天定时发送就行了吗。然而事情并没有想象中那么简单，这个登录状态每天都会失效，所以不能存个cookie就完事。一番研究下，学校的登录认证系统还有点东西。应该是采用客户端cookie+服务端session的方式。</p>
+<span id="more"></span>
+<hr>
+<p>参考了<a target="_blank" rel="noopener" href="https://github.com/HeraldStudio/herald-webservice/blob/29180c4ce90a444cf74ae00d3cd561dd17292ed3/middleware/auth-provider/ids-6.js">小猴偷米</a>的认证代码，得知网页认证过程如下：</p>
+<ol>
+<li>登录页面包含动态生成的密钥等隐藏表单信息，客户端将账号、使用动态密钥加密和的密码再次POST至登录页地址；</li>
+<li>IDS 服务器解析表单参数，判断用户成功登陆，并生成 Ticket 作为参数，请求前端 302 跳到新信息门户；</li>
+<li>前端再次 GET 请求带 Ticket 参数的新信息门户链接；</li>
+<li>新信息门户取 Ticket 参数，私下与 IDS 服务器进行验证，验证成功后向前端颁发统一身份认证 Cookie。</li>
+</ol>
+<p>知道了原理后就好办了，依葫芦画瓢把js写的代码翻译成python就行。唯一碰到的难点就是加密算法的实现。原项目中的js代码都是经过混淆的，通过人眼辨认实在太麻烦，我又尝试几种现成的AES加密模式什么CBC，OFB等等，发现输出结果都不太像，看来这其中另有玄机。</p>
+<p>既然翻译代码不成，那么万能的python能不能直接运行js代码呢？一查还真有！<code>js2py</code>模块简直是我的救星！</p>
+<p>几行代码轻松执行js程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> js2py</span><br><span class="line"></span><br><span class="line">context = js2py.EvalJs()</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./ids-encrypt.js&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    js_content = f.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encryptAES</span>(<span class="params">data, salt</span>):</span><br><span class="line">    <span class="comment"># 执行整段JS代码</span></span><br><span class="line">    context.execute(js_content)</span><br><span class="line">    result = context.encryptAES(data, salt)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>获取到登录session后，自然是我说了算了，校内接口轻松访问。</p>
+<p>目前主要实现了 <strong>体温上报</strong> 和 <strong>GPA计算</strong> 的功能。</p>
+<p>具体功能介绍请见<a target="_blank" rel="noopener" href="https://github.com/luzy99/SEUAutoLogin">GitHub仓库</a></p>
+<p>下面贴几张运行结果图：</p>
+<p>每日上报（部署服务器定时任务后简直美滋滋~）</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130213925.png" alt="每日上报"></p>
+<p>GPA计算</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20210130214250.png" alt="GPA计算"></p>
+<hr>
+<ul>
+<li><p>2021.11.23 <code>fork</code>数破百留念</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20211123235442.png" alt="fork破百留念"></p>
+</li>
+<li><p>2021.12.26 <code>200 fork</code>达成！</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20211226131132.png" alt="200fork"></p>
+<p>想不到只过了1个月，fork数和star数刚好翻倍了，想不到我的第一个热门项目竟是他。。。看来果然偷懒才是第一生产力。</p>
+</li>
+<li><p>2021.3.13 fork 破300，看得出疫情又反复了，希望能再次早日清零吧。</p>
+</li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><div class="article-licensing box"><div class="licensing-title"><p>今天你体温上报了吗？</p><p><a href="https://blog.luzy.top/posts/1769612424/">https://blog.luzy.top/posts/1769612424/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>江风引雨</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-01-30</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Python/">Python</a><a class="link-muted mr-2" rel="tag" href="/tags/http/">http</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/">模拟登录</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://luzy999.coding.net/p/cdn/d/cdn/git/raw/master/img/alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://luzy999.coding.net/p/cdn/d/cdn/git/raw/master/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/1795373516/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">python应用打包笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/3996398217/"><span class="level-item">LCP-19 秋叶收藏集</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//unpkg.com/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="https://s2.pstatp.com/cdn/valine/1.4.14/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "6u1kzc8bz3w5XDibYBpuMiOW-MdYXbMMI",
+            appKey: "5fs1gh1F8FslxYsnLddMtKxe",
+            placeholder: "发条友善的评论吧！",
+            avatar: "mm",
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            
+            highlight: true,
+            recordIP: true,
+            serverURLs: "https://6u1kzc8b.api.lncldglobal.com",
+            
+            
+            enableQQ: true,
+            
+            tagMeta: ["博主","小伙伴",""],
+            master: ["a0a976d45a9e9edd12774e76008c49af","fe3373de9647b0c702831909a0e98db0"],
+            friends: [],
+            metaPlaceholder: {"nick":"昵称/QQ号（必填）","mail":"邮箱（必填）","link":"个人站点（选填）"},
+            requiredFields: ["nick","mail"],
+        });</script></div></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a><p class="size-small"><span>&copy; 2023 江风引雨</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span><span>  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">苏ICP备2021054922号</a></span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub Page" href="https://github.com/luzy99/luzy99.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://s2.pstatp.com/cdn/jquery/3.3.1/jquery.min.js"></script><script src="https://s2.pstatp.com/cdn/moment.js/2.22.2/moment-with-locales.min.js"></script><script>moment.locale("zh-Hans");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://blog.luzy.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script>if (typeof 300 !== 'undefined' 
+        && true == true) {
+        $(document).ready(function () {
+            var int = setInterval(fixCount, 100);
+            var busuanziSiteOffset = parseInt(300);
+            function fixCount() {
+                if ($("#busuanzi_container_site_uv").css("display") != "none" && parseInt($("#busuanzi_value_site_uv").html()) > 0) {
+                    clearInterval(int);
+                    $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
+                }
+            }
+        });
+    }</script><script src="https://s2.pstatp.com/cdn/clipboard.js/2.0.4/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://s2.pstatp.com/cdn/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://s2.pstatp.com/cdn/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://s2.pstatp.com/cdn/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><script src="/js/imaegoo/universe.js"></script><script src="//s2.pstatp.com/cdn/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="https://cdn.staticaly.com/gh/stevenjoezhang/live2d-widget/d3b85540/live2d.min.js"></script><script type="text/javascript" src="/js/firework.js"></script></body></html>

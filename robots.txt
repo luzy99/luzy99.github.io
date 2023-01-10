@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /posts/
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Allow: /resources/ 
+
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /404.html
+
+Sitemap: https://blog.luzy.top/sitemap.xml
+Sitemap: https://blog.luzy.top/baidusitemap.xml

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"><meta name="keywords" content="博客,hexo,python,blog,编程,教程,分享"><meta name="description" content="记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"><title>最优化问题求解及Lingo教程 - 江风引雨の小po站</title><meta name="description" content="介绍Lingo是一款求解最优化问题的软件，可以用于求解非线性规划，也可以用于一些线性和非线性方程组的求解等，功能十分强大，是求解优化模型的最佳选择。"><meta property="og:type" content="article"><meta property="og:title" content="最优化问题求解及Lingo教程"><meta property="og:url" content="https://blog.luzy.top/posts/2069852828/"><meta property="og:site_name" content="江风引雨の小po站"><meta property="og:description" content="介绍Lingo是一款求解最优化问题的软件，可以用于求解非线性规划，也可以用于一些线性和非线性方程组的求解等，功能十分强大，是求解优化模型的最佳选择。"><meta property="og:image" content="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907111023.png"><meta property="article:published_time" content="2020-09-05T13:26:59.000Z"><meta property="article:modified_time" content="2023-01-10T13:32:16.074Z"><meta property="article:author" content="江风引雨"><meta property="article:tag" content="lingo"><meta property="article:tag" content="最优化问题"><meta property="article:tag" content="数模"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907111023.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.luzy.top/posts/2069852828/"},"headline":"江风引雨の小站","image":["https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907111023.png"],"datePublished":"2020-09-05T13:26:59.000Z","dateModified":"2023-01-10T13:32:16.074Z","author":{"@type":"Person","name":"江风引雨"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"记录生活,分享知识,本站主要内容为一个新手程序猿的Python、Java、C++学习知识点总结和笔记,以及分享一些博客搭建技巧。"}</script><link rel="canonical" href="https://blog.luzy.top/posts/2069852828/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/font-awesome/5.14.0/css/all.min.css"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?b772a609bf40ffa183e1a396b066d2b5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://s2.pstatp.com/cdn/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://s2.pstatp.com/cdn/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=UA-157705821-2" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-157705821-2');</script><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://s2.pstatp.com/cdn/pace/1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column" style="background-image:url(https://api.luzy.top/bingimg);"><script type="text/javascript" src="/js/imaegoo/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main" role="navigation" aria-label="main navigation"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a><a class="navbar-burger burger is-hidden" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/"><i class="nav-icon fa fa-home"></i><p>首页</p></a><a class="navbar-item" href="/archives"><i class="nav-icon fa fa-archive"></i><p>归档</p></a><a class="navbar-item" href="/tags"><i class="nav-icon fa fa-tags"></i><p>标签</p></a><a class="navbar-item" href="/links"><i class="nav-icon fa fa-link"></i><p>友链</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://travellings.link"><i class="nav-icon fa fa-paper-plane"></i><p>开往</p></a><a class="navbar-item" href="/about"><i class="nav-icon fa fa-info-circle"></i><p>关于</p></a><div class="navbar-item has-dropdown is-hoverable" style="padding:0"><a class="navbar-item" href="/categories"><i class="nav-icon fa fa-th-list"></i><p>分类</p></a><div class="navbar-dropdown"><a class="navbar-item" href="/categories/%E7%AC%94%E8%AE%B0%E9%9A%8F%E5%86%99"><i class="nav-icon fa fa-book"></i><p>笔记随写</p></a><a class="navbar-item" href="/categories/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4"><i class="nav-icon fa fa-tint"></i><p>生活点滴</p></a><a class="navbar-item" href="/categories/hexo%E5%8D%9A%E5%AE%A2"><i class="nav-icon fa fa-rss-square"></i><p>hexo博客</p></a><a class="navbar-item" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3"><i class="nav-icon fa fa-file-code"></i><p>算法题解</p></a><a class="navbar-item" href="/categories/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97"><i class="nav-icon fa fa-terminal"></i><p>网站日志</p></a></div></div><div class="navbar-item has-dropdown is-hoverable" style="padding:0"><a class="navbar-item"><i class="nav-icon fa fa-flask"></i><p>实验室</p></a><div class="navbar-dropdown"><a class="navbar-item" target="_blank" rel="noopener" href="https://cloud.luzy.top"><i class="nav-icon fa fa-cloud-upload-alt"></i><p>个人云盘</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://aria2.luzy.top"><i class="nav-icon fa fa-download"></i><p>离线下载</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://boost.luzy.top"><i class="nav-icon fa fa-inbox"></i><p>网页沙盒</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://v2.luzy.top"><i class="nav-icon fa fa-paper-plane"></i><p>v2panel</p></a><a class="navbar-item" target="_blank" rel="noopener" href="https://api.luzy.top"><i class="nav-icon fa fa-toolbox"></i><p>API工具箱</p></a></div></div></div></div><div class="navbar-right"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907111023.png" alt="最优化问题求解及Lingo教程"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-09-05T13:26:59.000Z" title="2020-09-05T13:26:59.000Z">2020-09-05</time>发布</span><span class="level-item"><a class="link-muted" href="/categories/%E7%AC%94%E8%AE%B0%E9%9A%8F%E5%86%99/">笔记随写</a></span><span class="level-item">9 分钟读完 (大约1327个字)</span><span class="level-item" id="busuanzi_container_page_pv">&nbsp;&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">最优化问题求解及Lingo教程</h1><div class="content"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Lingo是一款求解最优化问题的软件，可以用于求解非线性规划，也可以用于一些线性和非线性方程组的求解等，功能十分强大，是求解优化模型的最佳选择。</p>
+<span id="more"></span>
+<h3 id="LINGO与MATLAB比较"><a href="#LINGO与MATLAB比较" class="headerlink" title="LINGO与MATLAB比较"></a>LINGO与MATLAB比较</h3><ul>
+<li>MATLAB<ol>
+<li>语法严谨，模型必须是标准形式</li>
+<li>内置算法只支持一维下标决策变量</li>
+<li>对于大规模问题，描述方式复杂、不直观</li>
+<li>求解NLP问题需要给出合适的初值估计</li>
+<li>需要自己制定算法</li>
+</ol>
+</li>
+<li>LINGO<ol>
+<li>模型可以不是标准形式</li>
+<li>支持二维下标决策变量</li>
+<li>大规模问题，运用集合命令可以方便定义带有规律的多个复杂条件</li>
+<li>求解NLP问题不需要给出初值估计</li>
+<li>不需要熟悉、指定算法</li>
+</ol>
+</li>
+</ul>
+<h2 id="最优化问题"><a href="#最优化问题" class="headerlink" title="最优化问题"></a>最优化问题</h2><p>首先介绍一下什么是最优化问题。</p>
+<p>最优化问题，即在所有可行的方案中选出使得目标最优的方案的实际问题。</p>
+<p>优化问题的三要素是：</p>
+<ul>
+<li>决策变量</li>
+<li>约束条件</li>
+<li>目标函数</li>
+</ul>
+<h3 id="数学规划-函数优化问题的标准形式"><a href="#数学规划-函数优化问题的标准形式" class="headerlink" title="数学规划/函数优化问题的标准形式"></a>数学规划/函数优化问题的标准形式</h3><script type="math/tex; mode=display">
+\min/ \max f(x)\\
+s.t. g_i(x)\leq0,i=1,\dots,m_1\\
+ h_j(x)=0,j=1,\dots,m_2\\
+ f:D \rightarrow R,D \subseteq R^n</script><p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200906171324.png" alt=""></p>
+<h3 id="优化问题分类"><a href="#优化问题分类" class="headerlink" title="优化问题分类"></a>优化问题分类</h3><p>根据决策变量取值情况不同，分为<strong>连续型</strong>和<strong>离散型</strong>。</p>
+<p>根据有无约束条件分为<strong>无约束优化</strong>和<strong>带约束优化</strong>。</p>
+<p>根据处理思想方法不同，分为<strong>数学规划</strong>（函数优化问题）、组合优化、图论与网络流、动态规划、目标优化、模糊优化、随机优化、对策与决策……</p>
+<h2 id="Lingo教程"><a href="#Lingo教程" class="headerlink" title="Lingo教程"></a>Lingo教程</h2><h3 id="求解LP问题"><a href="#求解LP问题" class="headerlink" title="求解LP问题"></a>求解LP问题</h3><script type="math/tex; mode=display">
+\min=2*x_1+3*x_2\\
+s.t. x_1+x_2 \geq 350\\
+x_1 \geq 100\\
+2*x_1+x_2 \leq 600</script><p>求解这样一个问题，只需直接输入如下代码，写法基本与数学公式一直，不用改写成标准形式</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">min</span>=<span class="number">2</span>*x1+<span class="number">3</span>*x2;</span><br><span class="line">x1+x2&gt;=<span class="number">350</span>;</span><br><span class="line">x1&gt;=<span class="number">100</span>;</span><br><span class="line"><span class="number">2</span>*x1+x2&lt;=<span class="number">600</span>;</span><br></pre></td></tr></table></figure>
+<p>点击🎯图标运行：</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907163944.png" alt="LP-Lingo"></p>
+<p>可以看到直接识别出了问题类型，并找到了全局最优解。</p>
+<h3 id="求解MILP问题"><a href="#求解MILP问题" class="headerlink" title="求解MILP问题"></a>求解MILP问题</h3><p><img src="https://i.loli.net/2020/07/15/Vjec18xS4EkPqR6.png" alt=""></p>
+<blockquote>
+<p>@free: 可正可负（默认大于等于0）</p>
+<p>@gin：整数</p>
+</blockquote>
+<h3 id="求解IQP问题"><a href="#求解IQP问题" class="headerlink" title="求解IQP问题"></a>求解IQP问题</h3><p>⚠<strong>一定</strong>要在Lingo<strong>选项</strong>-&gt;<strong>求解非线性</strong>菜单中勾选<strong>二次规划识别</strong>！！否则会按照INLP问题求解,只能得出局部最优解。</p>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907165607.png" alt="image-20200907165607014"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">max</span>=<span class="number">98</span>*x1+<span class="number">277</span>*x2-x1^<span class="number">2</span><span class="number">-0.3</span>*x1*x2<span class="number">-2</span>*x2^<span class="number">2</span>;</span><br><span class="line">x1+x2&lt;=<span class="number">100</span>;</span><br><span class="line">x1&lt;<span class="number">2</span>*x2;</span><br><span class="line">@gin(x1);@gin(x2);</span><br></pre></td></tr></table></figure>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907170239.png" alt="IQP"></p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<li>算数运算符 + - * / ^</li>
+<li>关系运算符 &lt;(=) = &gt;(=)</li>
+<li>逻辑运算符<ul>
+<li>否定 #NOT#</li>
+<li>相等 #EQ#</li>
+<li>不等 #NE#</li>
+<li>与 #AND#</li>
+<li>或 #OR#</li>
+<li>大于 #GT#</li>
+<li>大于等于 #GE#</li>
+<li>小于等于 #LE#</li>
+<li>小于 #LT#</li>
+</ul>
+</li>
+</ul>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
+<li>@ABS(x)  绝对值</li>
+<li>@SIN(x)，@COS(x) … 三角函数</li>
+<li>@EXP(x)  返回$e^x$</li>
+<li>@LOG(x)  自然对数</li>
+<li>@SIGN(x)  x&lt;0返回-1；否则返回1</li>
+<li>@FLOOR(x)  返回x靠近0的整数部分，如@FLOOR(1.2)=1,@FLOOR(-2.3)=-2</li>
+</ul>
+<h3 id="金融函数"><a href="#金融函数" class="headerlink" title="金融函数"></a>金融函数</h3><ul>
+<li>$@fpa(r,n)=\sum_{k=1}^n{\frac{1}{\left( 1+r \right) ^k}=}\frac{1-\left( 1+r \right) ^{-n}}{r}$</li>
+<li>$@fpl(r,n)=\left( 1+r \right) ^{-n}$</li>
+</ul>
+<h3 id="概率函数"><a href="#概率函数" class="headerlink" title="概率函数"></a>概率函数</h3><ul>
+<li>@pbn(p,n,x) 二项分布</li>
+<li>@pcx(n,x) 卡方分布</li>
+<li>@pfd(n,d,x) F分布</li>
+<li>……</li>
+</ul>
+<h3 id="变量界定函数"><a href="#变量界定函数" class="headerlink" title="变量界定函数"></a>变量界定函数</h3><p><strong>Lingo变量默认是非负的</strong></p>
+<ul>
+<li>@bin(x)  x=0或1</li>
+<li>@bnd(L,x,U) $L \le x \le U$</li>
+<li>free(x) 实数</li>
+<li>@gin(x) 整数</li>
+</ul>
+<h3 id="条件判断函数"><a href="#条件判断函数" class="headerlink" title="条件判断函数"></a>条件判断函数</h3><p>@IF(logical_condition,true_result,false_result)</p>
+<blockquote>
+<p>例：分段函数</p>
+<script type="math/tex; mode=display">
+f\left( x \right) =\begin{cases}
+    100,x>0\\
+    2x,  x\le 0\\
+\end{cases}</script><p>fx=@if(x #gt# 0,100,2*x)</p>
+</blockquote>
+<h3 id="集合操作函数"><a href="#集合操作函数" class="headerlink" title="集合操作函数"></a>集合操作函数</h3><ul>
+<li>@in(set_name,index_1[,index_2])  是否在集合中，返回0/1</li>
+<li>@wrap(index,limit)  取模，返回 j=index-k*limit=index(mod limit) +1, k为整数，保证j在[1, limit]内</li>
+<li>@size(set_name)  集合成员个数</li>
+</ul>
+<h3 id="集合循环函数"><a href="#集合循环函数" class="headerlink" title="集合循环函数"></a>集合循环函数</h3><ul>
+<li>@FOR(set_name:constraint_expressions) 对每个元素生成约束</li>
+<li>@MAX(set_name:expressions) 表达式的最大值</li>
+<li>@MIN(set_name:expressions) 表达式的最小值</li>
+<li>@SUM(set_name:expressions) 表达式的和</li>
+</ul>
+<blockquote>
+<p>例：产生序列{1，4，9，16，25}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model:</span><br><span class="line">sets:</span><br><span class="line"> number/1..5/:x;</span><br><span class="line">endsets</span><br><span class="line"> @for(number(i):x(i)=i^2);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=@sum(number(<span class="built_in">i</span>)|<span class="built_in">i</span>#le# <span class="number">5</span>: x); !前<span class="number">5</span>个求和</span><br><span class="line">m=@<span class="built_in">min</span>(number(<span class="built_in">i</span>)|<span class="built_in">i</span>#ge# <span class="number">5</span>: x); !<span class="number">5</span>个之后的最小值</span><br></pre></td></tr></table></figure>
+<p><img src="https://luzy999.coding.net/p/cdn/shared-depot/cdn/git/raw/master/img/20200907222047.png" alt="例题"></p>
+</blockquote>
+<h3 id="输入输出函数"><a href="#输入输出函数" class="headerlink" title="输入输出函数"></a>输入输出函数</h3><ul>
+<li><strong>@OLE  excel表格读取</strong></li>
+<li>@file</li>
+<li>@text</li>
+</ul>
+<h3 id="求解状态"><a href="#求解状态" class="headerlink" title="求解状态"></a>求解状态</h3><ul>
+<li><code>@status()</code></li>
+<li><strong>0 Global Optimum 全局最优</strong></li>
+<li>1 Infeasible 不可行</li>
+<li>2 Unbounded 无界</li>
+<li>3 Undetermined 不确定</li>
+<li><strong>4 Feasible 可行</strong></li>
+<li>5 Infeasible or Unbounded</li>
+<li><strong>6 Local Optimum 局部最优</strong></li>
+<li>7 Locally Infeasible 局部不可行（可行解可能存在，但lingo没找到）</li>
+<li>8 Cutoff 目标函数的截断值被达到</li>
+<li>9 Numeric Error 算数错误</li>
+</ul>
+<h2 id="Lingo建模技巧"><a href="#Lingo建模技巧" class="headerlink" title="Lingo建模技巧"></a>Lingo建模技巧</h2><ul>
+<li>尽量使用实数优化，减少整数约束和整数变量</li>
+<li>尽量使用光滑优化，少用绝对值、符号函数、多变量求最大/最小值、四舍五入、取整等</li>
+<li>尽量使用线性模型，x/y&lt;5改为x&lt;5y</li>
+<li>合理设置上下界，尽可能给出变量初始值</li>
+<li>参数数量级适当，不同参数数量级差距一般要求小于3</li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><div class="article-licensing box"><div class="licensing-title"><p>最优化问题求解及Lingo教程</p><p><a href="https://blog.luzy.top/posts/2069852828/">https://blog.luzy.top/posts/2069852828/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>江风引雨</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-09-05</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/lingo/">lingo</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/">最优化问题</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E6%A8%A1/">数模</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://luzy999.coding.net/p/cdn/d/cdn/git/raw/master/img/alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://luzy999.coding.net/p/cdn/d/cdn/git/raw/master/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/2968289947/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Hexo折腾系列（六）数学公式渲染优化</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/3276205951/"><span class="level-item">python模块相对路径引用错误处理</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//unpkg.com/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="https://s2.pstatp.com/cdn/valine/1.4.14/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "6u1kzc8bz3w5XDibYBpuMiOW-MdYXbMMI",
+            appKey: "5fs1gh1F8FslxYsnLddMtKxe",
+            placeholder: "发条友善的评论吧！",
+            avatar: "mm",
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            
+            highlight: true,
+            recordIP: true,
+            serverURLs: "https://6u1kzc8b.api.lncldglobal.com",
+            
+            
+            enableQQ: true,
+            
+            tagMeta: ["博主","小伙伴",""],
+            master: ["a0a976d45a9e9edd12774e76008c49af","fe3373de9647b0c702831909a0e98db0"],
+            friends: [],
+            metaPlaceholder: {"nick":"昵称/QQ号（必填）","mail":"邮箱（必填）","link":"个人站点（选填）"},
+            requiredFields: ["nick","mail"],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">介绍</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#LINGO与MATLAB比较"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">LINGO与MATLAB比较</span></span></a></li></ul></li><li><a class="level is-mobile" href="#最优化问题"><span class="level-left"><span class="level-item">2</span><span class="level-item">最优化问题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#数学规划-函数优化问题的标准形式"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">数学规划/函数优化问题的标准形式</span></span></a></li><li><a class="level is-mobile" href="#优化问题分类"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">优化问题分类</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Lingo教程"><span class="level-left"><span class="level-item">3</span><span class="level-item">Lingo教程</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#求解LP问题"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">求解LP问题</span></span></a></li><li><a class="level is-mobile" href="#求解MILP问题"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">求解MILP问题</span></span></a></li><li><a class="level is-mobile" href="#求解IQP问题"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">求解IQP问题</span></span></a></li><li><a class="level is-mobile" href="#运算符"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">运算符</span></span></a></li><li><a class="level is-mobile" href="#数学函数"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">数学函数</span></span></a></li><li><a class="level is-mobile" href="#金融函数"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">金融函数</span></span></a></li><li><a class="level is-mobile" href="#概率函数"><span class="level-left"><span class="level-item">3.7</span><span class="level-item">概率函数</span></span></a></li><li><a class="level is-mobile" href="#变量界定函数"><span class="level-left"><span class="level-item">3.8</span><span class="level-item">变量界定函数</span></span></a></li><li><a class="level is-mobile" href="#条件判断函数"><span class="level-left"><span class="level-item">3.9</span><span class="level-item">条件判断函数</span></span></a></li><li><a class="level is-mobile" href="#集合操作函数"><span class="level-left"><span class="level-item">3.10</span><span class="level-item">集合操作函数</span></span></a></li><li><a class="level is-mobile" href="#集合循环函数"><span class="level-left"><span class="level-item">3.11</span><span class="level-item">集合循环函数</span></span></a></li><li><a class="level is-mobile" href="#输入输出函数"><span class="level-left"><span class="level-item">3.12</span><span class="level-item">输入输出函数</span></span></a></li><li><a class="level is-mobile" href="#求解状态"><span class="level-left"><span class="level-item">3.13</span><span class="level-item">求解状态</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Lingo建模技巧"><span class="level-left"><span class="level-item">4</span><span class="level-item">Lingo建模技巧</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.svg" alt="江风引雨の小po站" height="28"><img class="logo-img-dark" src="/img/logo-night.svg" alt="江风引雨の小po站" height="28"></a><p class="size-small"><span>&copy; 2023 江风引雨</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span><span>  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">苏ICP备2021054922号</a></span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub Page" href="https://github.com/luzy99/luzy99.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://s2.pstatp.com/cdn/jquery/3.3.1/jquery.min.js"></script><script src="https://s2.pstatp.com/cdn/moment.js/2.22.2/moment-with-locales.min.js"></script><script>moment.locale("zh-Hans");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://blog.luzy.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script>if (typeof 300 !== 'undefined' 
+        && true == true) {
+        $(document).ready(function () {
+            var int = setInterval(fixCount, 100);
+            var busuanziSiteOffset = parseInt(300);
+            function fixCount() {
+                if ($("#busuanzi_container_site_uv").css("display") != "none" && parseInt($("#busuanzi_value_site_uv").html()) > 0) {
+                    clearInterval(int);
+                    $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
+                }
+            }
+        });
+    }</script><script src="https://s2.pstatp.com/cdn/clipboard.js/2.0.4/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://s2.pstatp.com/cdn/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://s2.pstatp.com/cdn/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://s2.pstatp.com/cdn/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><script src="/js/imaegoo/universe.js"></script><script src="//s2.pstatp.com/cdn/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="https://cdn.staticaly.com/gh/stevenjoezhang/live2d-widget/d3b85540/live2d.min.js"></script><script type="text/javascript" src="/js/firework.js"></script></body></html>
