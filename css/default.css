@@ -3348,14 +3348,17 @@ a.navbar-item.is-active,
   .pagination {
     justify-content: space-between;
   }
-  .pagination.is-centered .pagination-previous {
+  .pagination.is-centered .pagination-previous,
+  .pagination .pagination-previous {
     order: 1;
   }
-  .pagination.is-centered .pagination-list {
+  .pagination.is-centered .pagination-list,
+  .pagination .pagination-list {
     justify-content: center;
     order: 2;
   }
-  .pagination.is-centered .pagination-next {
+  .pagination.is-centered .pagination-next,
+  .pagination .pagination-next {
     order: 3;
   }
   .pagination.is-right .pagination-previous {
@@ -10803,6 +10806,8 @@ textarea {
 }
 .card {
   overflow: visible;
+  opacity: 0.9;
+  transition: all 0.6s;
   border-radius: 4px;
 }
 .card + .card,
@@ -10814,9 +10819,18 @@ textarea {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+.card .card-image img {
+  transition: all 1s;
+}
 .card .media + .media {
   border: none;
   margin-top: 0;
+}
+.card:hover {
+  opacity: 1;
+}
+.card:hover .card-image img {
+  transform: scale(1.1);
 }
 article.media {
   color: #7a7a7a;
@@ -11064,6 +11078,9 @@ footer.footer .level-end .field {
 }
 .footer-logo img {
   max-height: 2.25rem;
+}
+.pagination {
+  margin-top: 1.5rem;
 }
 .pagination .pagination-link a,
 .pagination .pagination-ellipsis a,
