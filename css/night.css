@@ -320,6 +320,10 @@ body.night {
   color: #fff;
   background-color: #434a56;
 }
+.night .navbar-dropdown,
+.night .article-licensing {
+  background-color: rgba(40,44,52,0.9);
+}
 .night ::selection {
   color: #fff;
   background-color: rgba(52,109,167,0.8);

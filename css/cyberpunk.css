@@ -10834,6 +10834,10 @@ textarea {
 .card:hover .card-image img {
   transform: scale(1.1);
 }
+article img {
+  padding-left: 4em;
+  padding-right: 4em;
+}
 article.media {
   color: #848484;
 }
@@ -11457,6 +11461,10 @@ figure.highlight .section {
 }
 #back-to-top.rise-up {
   transform: translateY(0);
+}
+.gallery-item {
+  display: block;
+  text-align: center;
 }
 .gallery-item .caption {
   color: #848484;
@@ -12210,6 +12218,10 @@ body.night {
 .night .searchbox .searchbox-container .searchbox-header .searchbox-close:hover {
   color: #fff;
   background-color: #434a56;
+}
+.night .navbar-dropdown,
+.night .article-licensing {
+  background-color: rgba(40,44,52,0.9);
 }
 .night ::selection {
   color: #fff;
