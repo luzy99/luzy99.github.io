@@ -1,0 +1,62 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<link rel="icon" href="/img/favicon.svg">
+<link rel="stylesheet" type="text/css" href="/404/404.css">
+<title>(・∀・*) 网页走丢了</title>
+</head>
+<body>
+<div class="box">
+  <div class="box__ghost">
+    <div class="symbol"></div>
+    <div class="symbol"></div>
+    <div class="symbol"></div>
+    <div class="symbol"></div>
+    <div class="symbol"></div>
+    <div class="symbol"></div>
+    <div class="box__ghost-container">
+      <div class="box__ghost-eyes" style="transform: translate(-50%, -45%);">
+        <div class="box__eye-left"></div>
+        <div class="box__eye-right"></div>
+      </div>
+      <div class="box__ghost-bottom">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="box__ghost-shadow"></div>
+  </div>
+  <div class="box__description">
+    <div class="box__description-container">
+      <div class="box__description-title">404 Not Found</div>
+      <div class="box__description-text">页面走丢了，回首页看看?</div>
+    </div>
+    <a href="/" class="box__button">返回主页</a>
+  </div>
+</div>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var pageX = window.innerWidth;
+var pageY = window.innerHeight;
+var mouseY=pageX;
+var mouseX=pageY;
+$(document).mousemove(function( event ) {
+  //verticalAxis
+  mouseY = event.pageY;
+  yAxis = (pageY/2-mouseY)/pageY*300; 
+  //horizontalAxis
+  mouseX = event.pageX / -pageX;
+  xAxis = -mouseX * 100 - 100;
+  $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' }); 
+});</script>
+</body>
+</html>
+
+
+
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>

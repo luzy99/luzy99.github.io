@@ -1,0 +1,92 @@
+#stage {
+  position: relative;
+  right: 10px;
+}
+#stage img {
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+#stage a {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+}
+#inner {
+  position: relative;
+  background-color: #999;
+  clip-path: circle(110px at center);
+  -webkit-clip-path: circle(110px at center);
+}
+#cover {
+  position: absolute;
+  background-color: #cb3837;
+  width: 100%;
+  height: 100%;
+  bottom: 10%;
+  transition: all 1s;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.1);
+}
+#text {
+  position: absolute;
+  bottom: 30%;
+  font-size: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.4;
+  font-weight: bold;
+}
+#detail {
+  position: absolute;
+  background: rgba(255,255,255,0.1);
+  width: 100%;
+  height: 10px;
+  bottom: 0;
+}
+#handle {
+  position: absolute;
+  background: #ccc;
+  bottom: -2px;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,0.1);
+  height: 8px;
+  left: 50%;
+  margin-left: -15px;
+  width: 30px;
+  cursor: url("/img/cursor/link.cur"), pointer;
+}
+#info {
+  left: 40px;
+  bottom: 20px;
+}
+#refresh {
+  right: 40px;
+  bottom: 20px;
+}
+#live2d {
+  cursor: url("/img/cursor/link.cur"), grab;
+  height: 280px;
+  width: 280px;
+}
+#live2d:active {
+  cursor: url("/img/cursor/link.cur"), grabbing;
+}
+.spin-icon {
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transition: all ease 1s;
+  -moz-transition: all ease 1s;
+  -o-transition: all ease 1s;
+}
+.spin-icon:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+}
